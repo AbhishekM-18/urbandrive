@@ -471,7 +471,7 @@ const drivers = [
         id: "vehicle-01",                              // unique inside this driver
         name: "Swift-Dzire",
         image: "assets/images/vehicles/driver-06/vehicle-01.jpg",
-        gallery: ["assets/images/vehicles/driver-06/vehicle-010.jpg","assets/images/vehicles/driver-06/vehicle-011.jpg","assets/images/vehicles/driver-06/vehicle-013.jpg"],                                    // optional extra photo paths
+        gallery: ["assets/images/vehicles/driver-06/vehicle-010.jpg","assets/images/vehicles/driver-06/vehicle-011.jpg","assets/images/vehicles/driver-06/vehicle-012.jpg"],                                    // optional extra photo paths
         brand: "Maruti-Suzuki", model: "Add model", year: "2025",
         category: "Sedan", seats: 5,                  // SAMPLE values — replace
         luggage: "", fuel: "Petrol", transmission: "", airConditioning: "Yes",
