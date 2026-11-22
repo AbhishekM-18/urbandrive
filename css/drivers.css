@@ -1,0 +1,99 @@
+/* =====================================================================
+   css/drivers.css — driver cards, vehicle cards, search/filter bar,
+   driver profile page and vehicle details page
+   ===================================================================== */
+/* image + placeholder (placeholder sits underneath the <img>) */
+.media { position: relative; overflow: hidden; background: var(--ud-lav); }
+.media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.media .ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; color: var(--ud-primary-dark); font-weight: 700; font-size: .85rem; text-align: center; background: linear-gradient(135deg, var(--ud-lav), #E3F4EB); }
+.media .ph .bi { font-size: 2.4rem; }
+.media .ph .initial { font-family: var(--font-display); font-size: 3.4rem; line-height: 1; }
+.media-driver { aspect-ratio: 4 / 3.2; }
+.media-vehicle { aspect-ratio: 16 / 10; }
+.media-profile { aspect-ratio: 4 / 5; border-radius: 28px; }
+.media-gallery { aspect-ratio: 16 / 10; border-radius: 26px; }
+.media-thumb { aspect-ratio: 16 / 10; border-radius: 12px; }
+.media-thumb .ph .bi { font-size: 1.2rem; }
+.media-avatar { width: 54px; height: 54px; border-radius: 50%; }
+.media-avatar .ph { font-size: 1.3rem; }
+.media-link { display: block; }
+.ud-card:hover .media img { transform: scale(1.06); }
+
+/* cards */
+.ud-card { background: var(--ud-card); border: 1px solid var(--ud-border); border-radius: var(--ud-radius); overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: transform .3s, box-shadow .3s, border-color .3s; }
+.ud-card:hover { transform: translateY(-4px); box-shadow: var(--ud-shadow); border-color: #CFCBF9; }
+.ud-card .media-link .media { border-radius: 0; }
+.card-body-ud { padding: 1.3rem; display: flex; flex-direction: column; flex: 1; }
+.card-title-ud { font-size: 1.2rem; margin: 0 0 .5rem; font-weight: 700; }
+.card-title-ud a { color: var(--ud-text); text-decoration: none; }
+.card-title-ud a:hover { color: var(--ud-primary-dark); }
+.card-text-ud { color: var(--ud-muted); font-size: .96rem; margin-bottom: .9rem; }
+.count-pill { background: var(--ud-mint); color: #0F4A31; font-weight: 700; font-size: .8rem; padding: .25rem .7rem; border-radius: 999px; white-space: nowrap; }
+.meta-list { list-style: none; padding: 0; margin: 0 0 1.2rem; display: grid; gap: .5rem; font-size: .93rem; }
+.meta-list li { display: flex; gap: .6rem; align-items: flex-start; }
+.meta-list .bi { color: var(--ud-primary); margin-top: .15rem; }
+.card-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: auto; }
+.badges { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .6rem; }
+.badge-cat { background: var(--ud-lav); color: var(--ud-primary-dark); font-weight: 700; font-size: .8rem; padding: .25rem .7rem; border-radius: 999px; }
+.badge-sample { background: #FFF6D8; color: #4D3E05; font-weight: 700; font-size: .8rem; padding: .25rem .7rem; border-radius: 999px; }
+.owner-chip { display: inline-flex; align-items: center; gap: .45rem; font-size: .9rem; font-weight: 700; color: var(--ud-text); background: #E3F4EB; border-radius: 999px; padding: .3rem .8rem; text-decoration: none; margin-bottom: .8rem; align-self: flex-start; }
+.owner-chip:hover { background: var(--ud-mint); }
+.chips { list-style: none; padding: 0; margin: 0 0 1rem; display: flex; flex-wrap: wrap; gap: .4rem .9rem; font-size: .9rem; color: var(--ud-muted); }
+.chips i { color: var(--ud-primary); margin-right: .3rem; }
+.price { font-weight: 700; font-size: 1.05rem; color: var(--ud-primary-dark); }
+
+/* search + filter bar */
+.filter-bar, .filter-inline { display: flex; flex-wrap: wrap; gap: .9rem; align-items: flex-end; }
+.filter-bar { background: var(--ud-card); border: 1px solid var(--ud-border); border-radius: 24px; padding: 1.1rem 1.2rem; box-shadow: var(--ud-shadow); margin-bottom: 1.4rem; }
+.field { display: flex; flex-direction: column; gap: .3rem; min-width: 170px; }
+.field.grow { flex: 1 1 260px; }
+.field label { font-weight: 700; font-size: .88rem; }
+.input-icon { position: relative; }
+.input-icon .bi { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--ud-muted); }
+.input-icon .form-control { padding-left: 2.6rem; }
+.tabs { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin-bottom: 1.4rem; }
+.tab { border: 2px solid var(--ud-border); background: var(--ud-card); border-radius: 999px; padding: .5rem 1.1rem; font-weight: 700; color: var(--ud-text); transition: background-color .25s, border-color .25s, color .25s; }
+.tab:hover { border-color: var(--ud-primary); }
+.tab.active { background: var(--ud-primary); border-color: var(--ud-primary); color: #fff; }
+.tab-count { display: inline-block; min-width: 1.6rem; text-align: center; margin-left: .35rem; background: rgba(32, 36, 43, .08); border-radius: 999px; padding: 0 .45rem; font-size: .85rem; }
+.tab.active .tab-count { background: rgba(255, 255, 255, .25); }
+.result-summary { margin-left: auto; color: var(--ud-muted); font-size: .92rem; }
+.empty-state { text-align: center; background: var(--ud-card); border: 2px dashed var(--ud-border); border-radius: var(--ud-radius); padding: 2.5rem 1.5rem; }
+.empty-state > .bi { font-size: 2.4rem; color: var(--ud-primary); }
+
+/* breadcrumbs */
+.crumbs { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem; padding: 0; margin: 0; font-size: .92rem; color: var(--ud-muted); }
+.crumbs li + li::before { content: "/"; margin-right: .4rem; color: #A8ADB7; }
+.crumbs a { color: var(--ud-primary-dark); }
+.crumbs li[aria-current] { color: var(--ud-text); font-weight: 700; }
+
+/* driver profile */
+.profile-photo { position: sticky; top: calc(var(--header-h) + 16px); }
+.profile-name { font-size: clamp(1.8rem, 3.6vw, 2.6rem); font-weight: 700; margin-bottom: .6rem; }
+.profile-bio { font-size: 1.08rem; color: var(--ud-muted); max-width: 62ch; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .9rem; margin: 1.4rem 0; }
+.fact { display: flex; gap: .8rem; background: var(--ud-card); border: 1px solid var(--ud-border); border-radius: 16px; padding: .9rem 1rem; }
+.fact > .bi { color: var(--ud-primary); font-size: 1.25rem; margin-top: .1rem; }
+.fact-label { display: block; font-size: .8rem; color: var(--ud-muted); font-weight: 700; }
+.fact-value { display: block; font-weight: 500; }
+.contact-panel { background: var(--ud-lav); border-radius: 22px; padding: 1.3rem; margin-top: 1.2rem; }
+.contact-actions { display: flex; flex-wrap: wrap; gap: .7rem; }
+
+/* vehicle details */
+.gallery-main .media { box-shadow: var(--ud-shadow); }
+.thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: .6rem; margin-top: .8rem; }
+.thumb { border: 3px solid transparent; border-radius: 15px; padding: 0; background: none; transition: border-color .25s; }
+.thumb.active, .thumb:hover { border-color: var(--ud-primary); }
+.owner-card { display: flex; align-items: center; gap: .9rem; background: var(--ud-card); border: 1px solid var(--ud-border); border-radius: 18px; padding: .8rem 1rem; text-decoration: none; color: var(--ud-text); margin: 1rem 0; transition: border-color .25s, box-shadow .25s; }
+.owner-card:hover { border-color: var(--ud-primary); box-shadow: var(--ud-shadow); }
+.owner-avatar { flex: none; }
+.owner-link { display: block; color: var(--ud-primary-dark); font-weight: 700; font-size: .9rem; }
+.price-line { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--ud-primary-dark); margin: 0; }
+.specs { background: var(--ud-card); border: 1px solid var(--ud-border); border-radius: 20px; padding: .4rem 1.2rem; margin: 0; }
+.spec { display: flex; justify-content: space-between; gap: 1rem; padding: .75rem 0; border-bottom: 1px solid var(--ud-border); }
+.spec:last-child { border: 0; }
+.spec dt { font-weight: 700; font-size: .93rem; }
+.spec dd { margin: 0; text-align: right; }
+.feature-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .6rem; }
+.feature-list li { display: flex; gap: .5rem; align-items: center; background: #E3F4EB; border-radius: 12px; padding: .55rem .8rem; }
+.feature-list i { color: var(--ud-mint-deep); }

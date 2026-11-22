@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UrbanDrive — Find a Driver and Explore Their Vehicles</title>
+  <meta name="description" content="UrbanDrive is a driver-first vehicle and travel platform. Meet drivers, explore all their vehicles, and contact them directly.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/drivers.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+</head>
+<body>
+<header id="site-header"></header>
+<main id="main">
+    <section class="hero">
+      <div class="hero-blob hero-blob-a" aria-hidden="true"></div><div class="hero-blob hero-blob-b" aria-hidden="true"></div>
+      <div class="container"><div class="row align-items-center g-4 g-lg-5">
+        <div class="col-lg-6">
+          <p class="hero-tag hero-anim"><i class="bi bi-person-badge"></i> Driver-first travel</p>
+          <h1 class="hero-title hero-anim">Choose your driver, then choose from their vehicles.</h1>
+          <p class="hero-lead hero-anim">UrbanDrive lets you meet the drivers first. Open a profile, see every vehicle that driver operates, and get in touch directly.</p>
+          <div class="hero-cta hero-anim">
+            <a class="btn btn-ud btn-lg" href="#discover">Explore Drivers</a>
+            <a class="btn btn-ud-outline btn-lg" href="#contact">Send an Enquiry</a>
+          </div>
+          <dl class="hero-stats hero-anim">
+            <div><dt>Driver profiles</dt><dd data-count="drivers">0</dd></div>
+            <div><dt>Vehicle listings</dt><dd data-count="vehicles">0</dd></div>
+          </dl>
+        </div>
+        <div class="col-lg-6"><div class="hero-visual">
+          <svg class="hero-art" viewBox="0 0 640 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ECEBFF"/><stop offset="1" stop-color="#F7F4EC"/></linearGradient></defs>
+            <rect width="640" height="520" fill="url(#sky)"/>
+            <circle cx="470" cy="130" r="56" fill="#B9E8D0"/>
+            <path d="M0 330 Q120 240 240 320 T480 300 T640 320 V520 H0Z" fill="#CFEFDF"/>
+            <path d="M0 380 Q160 300 320 370 T640 360 V520 H0Z" fill="#B9E8D0"/>
+            <path d="M-20 470 Q300 380 660 450 V520 H-20Z" fill="#4B43E0" opacity=".92"/>
+            <path d="M0 482 Q320 410 640 470" stroke="#fff" stroke-width="4" stroke-dasharray="22 18" fill="none" opacity=".8"/>
+            <g transform="translate(190 330)"><rect x="0" y="40" width="230" height="58" rx="22" fill="#635BFF"/><path d="M42 42 L70 6 H150 L186 42Z" fill="#8C86FF"/><path d="M62 38 L80 14 H112 V38Z M120 38 V14 H146 L170 38Z" fill="#ECEBFF"/><circle cx="62" cy="100" r="22" fill="#20242B"/><circle cx="62" cy="100" r="9" fill="#ECEBFF"/><circle cx="170" cy="100" r="22" fill="#20242B"/><circle cx="170" cy="100" r="9" fill="#ECEBFF"/></g>
+          </svg>
+          <img class="hero-photo" src="assets/images/hero/hero.jpg" alt="Travelling with an UrbanDrive driver" onerror="this.remove()">
+          <div class="hero-route"><span class="route-node"><i class="bi bi-person-badge"></i></span><span class="route-line" aria-hidden="true"></span><span class="route-cars" aria-hidden="true"><i class="bi bi-car-front-fill"></i><i class="bi bi-car-front-fill"></i><i class="bi bi-car-front-fill"></i></span><span class="route-text">One driver, many vehicles</span></div>
+        </div></div>
+      </div></div>
+    </section>
+    <section class="section" id="discover" aria-labelledby="discoverTitle">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" id="discoverTitle">Find a driver or a vehicle</h2>
+          <p class="lead-text">Search by driver name or vehicle, then filter by category and seating. Every vehicle is shown with its driver.</p>
+        </div>
+        <div id="demoNotice"></div>
+        <form class="filter-bar" id="filterForm" role="search" aria-label="Search drivers and vehicles">
+          <div class="field grow"><label for="fSearch">Search</label>
+            <div class="input-icon"><i class="bi bi-search"></i><input class="form-control" id="fSearch" type="search" placeholder="Driver name or vehicle name / model" autocomplete="off"></div></div>
+          <div class="field"><label for="fCategory">Vehicle category</label><select class="form-select" id="fCategory"></select></div>
+          <div class="field"><label for="fSeats">Seating capacity</label><select class="form-select" id="fSeats"></select></div>
+          <div class="field" id="sortWrap" hidden><label for="fSort">Sort vehicles</label>
+            <select class="form-select" id="fSort"><option value="default">Default</option><option value="name">Name A to Z</option><option value="seatsAsc">Seats: low to high</option><option value="seatsDesc">Seats: high to low</option><option value="year">Newest year</option></select></div>
+          <button class="btn btn-soft" type="button" id="clearFilters" hidden><i class="bi bi-x-lg"></i> Clear all filters</button>
+        </form>
+        <div class="tabs" role="tablist" aria-label="Choose what to browse">
+          <button class="tab" id="tabDrivers" role="tab" type="button">Drivers <span class="tab-count" id="countDrivers">0</span></button>
+          <button class="tab" id="tabVehicles" role="tab" type="button">Vehicles <span class="tab-count" id="countVehicles">0</span></button>
+          <span class="result-summary" id="resultSummary" aria-live="polite"></span>
+        </div>
+        <div class="row g-4" id="resultGrid"></div>
+        <div class="empty-state" id="emptyState" hidden><i class="bi bi-search"></i><h3 class="h5">No matches found</h3><p>Try a different name, or remove a filter.</p><button class="btn btn-ud" type="button" id="emptyClear">Clear all filters</button></div>
+      </div>
+    </section>
+
+    <section class="section section-lav" id="services" aria-labelledby="svcTitle"><div class="container">
+      <div class="section-head"><h2 class="section-title" id="svcTitle">Travel services</h2><p class="lead-text">Tell the driver or UrbanDrive what kind of journey you need.</p></div>
+      <div class="row g-4"><div class="col-12 col-sm-6 col-lg-3"><div class="service" data-reveal><span class="service-icon"><i class="bi bi-signpost-2"></i></span><h3>One-way trips</h3><p>Travel from one place to another with a driver you choose.</p></div></div><div class="col-12 col-sm-6 col-lg-3"><div class="service" data-reveal><span class="service-icon"><i class="bi bi-arrow-repeat"></i></span><h3>Round trips</h3><p>Go and return with the same driver and vehicle.</p></div></div><div class="col-12 col-sm-6 col-lg-3"><div class="service" data-reveal><span class="service-icon"><i class="bi bi-map"></i></span><h3>Outstation travel</h3><p>Longer journeys between cities and towns. Enquire for details.</p></div></div><div class="col-12 col-sm-6 col-lg-3"><div class="service" data-reveal><span class="service-icon"><i class="bi bi-building"></i></span><h3>Local rentals</h3><p>A driver and vehicle for getting around in and near your city.</p></div></div><div class="col-12 col-sm-6 col-lg-3"><div class="service" data-reveal><span class="service-icon"><i class="bi bi-clock"></i></span><h3>Hourly rentals</h3><p>Book a vehicle with a driver for a set number of hours.</p></div></div><div class="col-12 col-sm-6 col-lg-3"><div class="service" data-reveal><span class="service-icon"><i class="bi bi-airplane"></i></span><h3>Airport transfers</h3><p>Pick-up and drop for airport journeys.</p></div></div><div class="col-12 col-sm-6 col-lg-3"><div class="service" data-reveal><span class="service-icon"><i class="bi bi-people-fill"></i></span><h3>Family and group travel</h3><p>Vehicles of different sizes for families and groups.</p></div></div><div class="col-12 col-sm-6 col-lg-3"><div class="service" data-reveal><span class="service-icon"><i class="bi bi-briefcase"></i></span><h3>Corporate or special travel</h3><p>Send an enquiry for business trips and special occasions.</p></div></div></div></div></section>
+
+    <section class="section" id="how" aria-labelledby="howTitle"><div class="container">
+      <div class="section-head"><h2 class="section-title" id="howTitle">How it works</h2></div>
+      <ol class="steps"><li class="step" data-reveal><span class="step-icon"><i class="bi bi-search"></i></span><span class="step-text">Discover a driver</span></li><li class="step" data-reveal><span class="step-icon"><i class="bi bi-car-front"></i></span><span class="step-text">Explore vehicles</span></li><li class="step" data-reveal><span class="step-icon"><i class="bi bi-check2-square"></i></span><span class="step-text">Select a vehicle</span></li><li class="step" data-reveal><span class="step-icon"><i class="bi bi-chat-dots"></i></span><span class="step-text">Contact or enquire</span></li><li class="step" data-reveal><span class="step-icon"><i class="bi bi-card-checklist"></i></span><span class="step-text">Confirm journey details</span></li></ol></div></section>
+
+    <section class="section section-mint" id="about" aria-labelledby="whyTitle"><div class="container"><div class="row g-4 g-lg-5 align-items-center">
+      <div class="col-lg-5"><h2 class="section-title" id="whyTitle">Why choose UrbanDrive?</h2>
+        <p class="lead-text">UrbanDrive is a vehicle and travel service platform built around drivers. Instead of a long list of anonymous cars, you see who operates each vehicle and can speak to them directly.</p></div>
+      <div class="col-lg-7"><div class="row g-3"><div class="col-12 col-md-6"><div class="why-item" data-reveal><span class="why-icon"><i class="bi bi-person-lines-fill"></i></span><div><h3>Drivers come first</h3><p>Choose the person behind the wheel, then see every vehicle they operate.</p></div></div></div><div class="col-12 col-md-6"><div class="why-item" data-reveal><span class="why-icon"><i class="bi bi-grid"></i></span><div><h3>More vehicle choices</h3><p>Compare category, seating, fuel and features in one place.</p></div></div></div><div class="col-12 col-md-6"><div class="why-item" data-reveal><span class="why-icon"><i class="bi bi-telephone-outbound"></i></span><div><h3>Direct driver contact</h3><p>Call or WhatsApp the driver you picked, where they have shared a number.</p></div></div></div><div class="col-12 col-md-6"><div class="why-item" data-reveal><span class="why-icon"><i class="bi bi-envelope-paper"></i></span><div><h3>Easy enquiries</h3><p>Questions about pricing or plans go straight to the UrbanDrive team.</p></div></div></div></div></div></div></div></section>
+
+    <section class="section" id="reviews" aria-labelledby="revTitle"><div class="container">
+      <div class="section-head"><h2 class="section-title" id="revTitle">What customers say</h2></div>
+      <div class="coming-soon" data-reveal><i class="bi bi-chat-quote"></i><p class="mb-0"><strong>Customer reviews coming soon.</strong> Genuine reviews will appear here once customers have shared them.</p></div></div></section>
+
+    <section class="section section-lav" id="faq" aria-labelledby="faqTitle"><div class="container"><div class="row justify-content-center"><div class="col-lg-8">
+      <div class="section-head"><h2 class="section-title" id="faqTitle">Frequently asked questions</h2></div>
+      <div class="accordion ud-accordion" id="faqList"><div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq0" aria-expanded="false" aria-controls="faq0">How do I explore a driver's vehicles?</button></h3><div id="faq0" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Open Our Drivers, choose a driver and click Explore Vehicles. Their profile lists every vehicle they operate.</div></div></div><div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">Can I contact a driver directly?</button></h3><div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Yes, where the driver has shared a phone number. Call and WhatsApp buttons appear on their profile and vehicle pages. If you see “Contact details coming soon”, send an enquiry to UrbanDrive instead.</div></div></div><div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">How do I enquire about pricing?</button></h3><div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Prices are shown only when they have been provided. Otherwise, contact the driver or send an enquiry and choose “Pricing enquiry”.</div></div></div><div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">How can I request a specific vehicle?</button></h3><div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Open the vehicle's page and click “Send an Enquiry to UrbanDrive”. The driver and vehicle are filled in for you. You can also contact the driver directly.</div></div></div><div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">What travel services are available?</button></h3><div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">UrbanDrive lists one-way trips, round trips, outstation travel, local and hourly rentals, airport transfers, family and group travel, and corporate or special travel enquiries. Ask the driver to confirm what they offer for your journey.</div></div></div><div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">How can I contact UrbanDrive for assistance?</button></h3><div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Use the enquiry form at the bottom of this page or on the Contact page. It reaches the UrbanDrive team, not individual drivers. An enquiry does not confirm a booking.</div></div></div></div></div></div></div></section>
+
+    <section class="section" id="contact" aria-label="Enquiry"><div class="container"><div id="enquiryMount"></div></div></section>
+  </main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/drivers.js"></script>
+<script src="js/contact.js"></script>
+</body>
+</html>

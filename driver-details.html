@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Driver Profile — UrbanDrive</title>
+  <meta name="description" content="Driver profile and vehicles on UrbanDrive.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/drivers.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+</head>
+<body>
+<header id="site-header"></header>
+<main id="main">
+    <section class="page-head"><div class="container"><div id="crumbs"></div></div></section>
+    <section class="section pt-2"><div class="container"><div id="driverProfile"></div></div></section>
+    <section class="section section-lav pt-5" aria-labelledby="vehiclesTitle"><div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+        <div><h2 class="section-title mb-1" id="vehiclesTitle">Vehicles</h2><p class="lead-text m-0" id="vehiclesCount"></p></div>
+        <div class="filter-inline">
+          <div class="field"><label for="pCategory">Category</label><select class="form-select" id="pCategory"></select></div>
+          <div class="field"><label for="pSort">Sort</label><select class="form-select" id="pSort"><option value="default">Default</option><option value="name">Name A to Z</option><option value="seatsAsc">Seats: low to high</option><option value="seatsDesc">Seats: high to low</option><option value="year">Newest year</option></select></div>
+        </div></div>
+      <div class="row g-4" id="vehicleGrid"></div></div></section>
+    <section class="section" aria-labelledby="relTitle"><div class="container">
+      <h2 class="section-title" id="relTitle">Other drivers you may like</h2><div class="row g-4 mt-1" id="relatedDrivers"></div></div></section>
+  </main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/drivers.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Drivers and Vehicles — UrbanDrive</title>
+  <meta name="description" content="Browse UrbanDrive drivers and the vehicles each driver operates. Search and filter by category and seating capacity.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/drivers.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+</head>
+<body>
+<header id="site-header"></header>
+<main id="main">
+    <section class="page-head"><div class="container"><nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="index.html">Home</a></li><li aria-current="page">Our Drivers</li></ol></nav>
+      <h1 class="page-title">Our drivers and vehicles</h1><p class="lead-text">Pick a driver to see all the vehicles they operate.</p></div></section>
+    <section class="section" id="discover" aria-labelledby="discoverTitle">
+      <div class="container">
+        <h2 class="visually-hidden" id="discoverTitle">Browse and filter</h2>
+        <div id="demoNotice"></div>
+        <form class="filter-bar" id="filterForm" role="search" aria-label="Search drivers and vehicles">
+          <div class="field grow"><label for="fSearch">Search</label>
+            <div class="input-icon"><i class="bi bi-search"></i><input class="form-control" id="fSearch" type="search" placeholder="Driver name or vehicle name / model" autocomplete="off"></div></div>
+          <div class="field"><label for="fCategory">Vehicle category</label><select class="form-select" id="fCategory"></select></div>
+          <div class="field"><label for="fSeats">Seating capacity</label><select class="form-select" id="fSeats"></select></div>
+          <div class="field" id="sortWrap" hidden><label for="fSort">Sort vehicles</label>
+            <select class="form-select" id="fSort"><option value="default">Default</option><option value="name">Name A to Z</option><option value="seatsAsc">Seats: low to high</option><option value="seatsDesc">Seats: high to low</option><option value="year">Newest year</option></select></div>
+          <button class="btn btn-soft" type="button" id="clearFilters" hidden><i class="bi bi-x-lg"></i> Clear all filters</button>
+        </form>
+        <div class="tabs" role="tablist" aria-label="Choose what to browse">
+          <button class="tab" id="tabDrivers" role="tab" type="button">Drivers <span class="tab-count" id="countDrivers">0</span></button>
+          <button class="tab" id="tabVehicles" role="tab" type="button">Vehicles <span class="tab-count" id="countVehicles">0</span></button>
+          <span class="result-summary" id="resultSummary" aria-live="polite"></span>
+        </div>
+        <div class="row g-4" id="resultGrid"></div>
+        <div class="empty-state" id="emptyState" hidden><i class="bi bi-search"></i><h3 class="h5">No matches found</h3><p>Try a different name, or remove a filter.</p><button class="btn btn-ud" type="button" id="emptyClear">Clear all filters</button></div>
+      </div>
+    </section>
+  </main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/drivers.js"></script>
+</body>
+</html>
